@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+    <h1>Список товаров на складе:</h1>
+    <table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Название</th>
+      <th scope="col">Дата поступления</th>
+      <th scope="col">Количество на складе</th>
+      <th scope="col">Поставщик</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for good in good_list %}
+    <tr>
+      <td>{{ good.title }}</td>
+      <td>{{ good.supply_date }}</td>
+      <td>{{ good.quantity }}  {{ good.get_unit_display }}</td>
+      <td>{{ good.supplier.title }}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}
