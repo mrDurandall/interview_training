@@ -12,4 +12,4 @@ class CategoryDetailView(DetailView):
 class CategoryListView(ListView):
     model = Category
     extra_context = {'title': 'Разделы'}
-    queryset = Category.objects.prefetch_related().all()
+    queryset = Category.on_site.prefetch_related().all()
