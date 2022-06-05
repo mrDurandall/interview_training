@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'common',
     'goods',
     'categories',
+    'hitcount',
 ]
 
 MIDDLEWARE = [
@@ -50,6 +51,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'hitcount.middleware.hit_count_middleware',
 ]
 
 ROOT_URLCONF = 'django_project.urls'
