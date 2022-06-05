@@ -4,32 +4,12 @@
 
 {% block content %}
 
-    <h1>Список товаров на складе:</h1>
-    <table class="table table-striped">
-  <thead>
-    <tr>
-      <th scope="col">Название</th>
-      <th scope="col">Дата поступления</th>
-      <th scope="col">Количество на складе</th>
-      <th scope="col">Поставщик</th>
-      <th scope="col">Категории</th>
-    </tr>
-  </thead>
-  <tbody>
-  {% for good in good_list %}
-    <tr>
-      <td>{{ good.title }}</td>
-      <td>{{ good.supply_date }}</td>
-      <td>{{ good.quantity }}  {{ good.get_unit_display }}</td>
-      <td>{{ good.supplier.title }}</td>
-      <td>
-        {% for category in good.categories.all %}
-          <p><a class="link" href="{% url 'categories:category' category.id %}">{{ category.title }}</a></p>
-        {% endfor %}
-      </td>
-    </tr>
-  {% endfor %}
-  </tbody>
-</table>
+  <h1>Список товаров в категории {{ category.title }}</h1>
+
+  <ul class="list-group">
+    {% for good in category.goods.all %}
+      <li class="list-group-item">{{ good.title }}</li>
+    {% endfor %}
+  </ul>
 
 {% endblock %}
