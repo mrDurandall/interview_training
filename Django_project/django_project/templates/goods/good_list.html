@@ -12,6 +12,7 @@
       <th scope="col">Дата поступления</th>
       <th scope="col">Количество на складе</th>
       <th scope="col">Поставщик</th>
+      <th scope="col">Категории</th>
     </tr>
   </thead>
   <tbody>
@@ -21,6 +22,11 @@
       <td>{{ good.supply_date }}</td>
       <td>{{ good.quantity }}  {{ good.get_unit_display }}</td>
       <td>{{ good.supplier.title }}</td>
+      <td>
+        {% for category in good.categories.all %}
+          <p><a class="link" href="{% url 'categories:category' category.id %}">{{ category.title }}</a></p>
+        {% endfor %}
+      </td>
     </tr>
   {% endfor %}
   </tbody>

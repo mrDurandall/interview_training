@@ -18,10 +18,16 @@ class Good(models.Model):
                             default=Units.PIECES,
                             verbose_name='Единицы измерения')
     supplier = models.ForeignKey('common.Supplier',
-                                 related_name='good',
+                                 related_name='goods',
                                  verbose_name='Поставщик',
                                  on_delete=models.CASCADE,
                                  )
+    categories = models.ManyToManyField('categories.category',
+                                        related_name='goods',
+                                        verbose_name='Категории',
+                                        blank=True,
+                                        null=True,
+                                        )
 
     class Meta:
         verbose_name = 'Товар'

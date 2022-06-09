@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+  <h1>Список товаров в категории {{ category.title }}</h1>
+
+  <ul class="list-group">
+    {% for good in category.goods.all %}
+      <li class="list-group-item">{{ good.title }}</li>
+    {% endfor %}
+  </ul>
+
+{% endblock %}
