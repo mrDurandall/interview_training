@@ -7,4 +7,4 @@ from .models import Good
 
 class GoodsListView(ListView):
     model = Good
-    queryset = Good.objects.select_related('supplier').prefetch_related().all()
+    queryset = Good.on_site.select_related('supplier').prefetch_related().all()

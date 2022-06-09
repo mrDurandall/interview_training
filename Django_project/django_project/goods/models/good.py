@@ -1,3 +1,5 @@
+from django.contrib.sites.managers import CurrentSiteManager
+from django.contrib.sites.models import Site
 from django.db import models
 
 
@@ -22,12 +24,15 @@ class Good(models.Model):
                                  verbose_name='Поставщик',
                                  on_delete=models.CASCADE,
                                  )
-    categories = models.ManyToManyField('categories.category',
+    categories = models.ManyToManyField('categories.Category',
                                         related_name='goods',
                                         verbose_name='Категории',
                                         blank=True,
                                         null=True,
                                         )
+    sites = models.ManyToManyField(Site)
+    objects = models.Manager()
+    on_site = CurrentSiteManager()
 
     class Meta:
         verbose_name = 'Товар'
