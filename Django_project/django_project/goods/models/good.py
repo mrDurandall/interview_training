@@ -28,7 +28,6 @@ class Good(models.Model):
                                         related_name='goods',
                                         verbose_name='Категории',
                                         blank=True,
-                                        null=True,
                                         )
     sites = models.ManyToManyField(Site)
     objects = models.Manager()
